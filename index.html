@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <title>YoCokeController</title>
   <!-- rename as Yo Ordr??? -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="jquery.fittext.js"></script>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -24,18 +26,28 @@
 
 <body>
 	<div class="vendingMachine">
-		<div class="row r0">Coke</div>
-		<div class="row r1">Diet Coke</div>
-		<div class="row r2">Sprite</div>
-		<div class="row r3">Diet Cherry 7up</div>
-		<div class="row r4">Root Beer</div>
-		<div class="row r5">Vanilla Coke</div>
-		<div class="row r6">Random</div>
+		<div class="row r0">COKE</div>
+		<div class="row r1">DIET COKE</div>
+		<div class="row r2">SPRITE</div>
+		<div class="row r3">DIET CHERRY 7UP</div>
+		<div class="row r4">DIET DR. PEPPER</div>
+		<div class="row r5">VANILLA COKE</div>
+		<div class="row r6">RANDOM</div>
 	</div>
 
 	Yo username <input type="text" id ="yoUsername">
 	Yo API KEY <input type="text" id ="yoAPIKEY">
 	<button id="yoOneButton">Yo ONE</button>
+	<script>
+		jQuery(".r0").fitText();
+		jQuery(".r1").fitText();
+		jQuery(".r2").fitText();
+		jQuery(".r3").fitText();
+		jQuery(".r4").fitText();
+		jQuery(".r5").fitText();
+		jQuery(".r6").fitText();
+
+	</script>
 
 	<script type="text/javascript">
 		var myFirebaseRef = new Firebase("https://glowing-fire-3873.firebaseio.com/");
