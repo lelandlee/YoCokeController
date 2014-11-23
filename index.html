@@ -4,7 +4,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YoCoke</title>
+  <title>YoCokeController</title>
+  <!-- rename as Yo Ordr??? -->
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -37,43 +38,113 @@
 	<button id="yoOneButton">Yo ONE</button>
 
 	<script type="text/javascript">
+		var myFirebaseRef = new Firebase("https://glowing-fire-3873.firebaseio.com/");
+		myFirebaseRef.set({
+		  Coke: {
+		  	type: "Coke", yoUsername: "CUONGHOAN1103", amount: 20
+		  },
+		  Diet_Coke: {
+		  	type:"Diet Coke",username:"YOVEND81", amount: 20
+		  },
+		  Sprite:{
+		  	type:"Sprite",username:"YOVEND82", amount: 20
+		  },
+		  Diet_Cherry_7up:{
+		  	type:"Diet Cherry 7up",username:"YOVEND83", amount: 20
+		  },
+		  Root_Beer: {
+		  	type:"Root Beer",username:"YOVEND84", amount: 20
+		  },
+		  Vanilla_Coke: {
+		  	type:"Vanilla Coke",username:"YOVEND85", amount: 20
+		  }
+		});
+
+
 		var apiURL = 'https://api.justyo.co/';
 		var yoAPIKEY = "";
-		var sodas = [{type:"Coke",username:"CUONGHOAN1103"},{type:"Diet Coke",username:"YOVEND81"},{type:"Sprite",username:"YOVEND82"},{type:"Diet Cherry 7up",username:"YOVEND83"},{type:"Root Beer",username:"YOVEND84"},{type:"Vanilla Coke",username:"YOVEND85"}];
+		//array of obj
+		/*var sodas = [{type:"Coke",username:"CUONGHOAN1103"},{type:"Diet Coke",username:"YOVEND81"},{type:"Sprite",username:"YOVEND82"},{type:"Diet Cherry 7up",username:"YOVEND83"},{type:"Root Beer",username:"YOVEND84"},{type:"Vanilla Coke",username:"YOVEND85"}];
 ///
 		//create callback function to fix, initial error when API KEY has not been loaded
 		$(document).click(function(){
 			yoAPIKEY = $("#yoAPIKEY").val();
 			console.log('document pressed: ' + yoAPIKEY)
-		});
+		});	
 		$(".r0").click(function(){
-			console.log("r0 Pressed + " + sodas[0].username);
+			console.log(sodas[0].type + " : " + sodas[0].username);
 			yoOrder(sodas[0].username);
 		});
 		$(".r1").click(function(){
-			console.log("r0 Pressed + " + sodas[1].username);
+			console.log(sodas[1].type + " : " + sodas[1].username);
 			//yoOrder(sodas[1].username);
 		});
 		$(".r2").click(function(){
-			console.log("r0 Pressed + " + sodas[2].username);
+			console.log(sodas[2].type + " : " + sodas[2].username);
 			//yoOrder(sodas[2].username);
 		});
 		$(".r3").click(function(){
-			console.log("r0 Pressed + " + sodas[3].username);
+			console.log(sodas[3].type + " : " + sodas[3].username);
 			//yoOrder(sodas[3].username);
 		});
 		$(".r4").click(function(){
-			console.log("r0 Pressed + " + sodas[4].username);
+			console.log(sodas[4].type + " : " + sodas[4].username);
 			//yoOrder(sodas[4].username);
 		});
 		$(".r5").click(function(){
-			console.log("r0 Pressed + " + sodas[5].username);
+			console.log(sodas[5].type + " : " + sodas[5].username);
 			//yoOrder(sodas[5].username);
 		});
 		$(".r6").click(function(){
 			console.log("r6 Pressed");
 			var value = Math.floor(Math.random()*6);
-			console.log(value);
+			console.log(value + sodas[5].type);
+			//yoOrder(sodas[value].username)
+		});
+*/
+		//firebase integration
+		$(document).click(function(){
+			yoAPIKEY = $("#yoAPIKEY").val();
+			console.log('document pressed: ' + yoAPIKEY)
+		});	
+		$(".r0").click(function(){
+			var amtRes;
+			myFirebaseRef.child("Coke").on("value", function(snapshot) {
+				var info = snapshot.val();
+			  console.log(info.type + " " + info.amount + " " + info.yoUsername);
+			  if(info.amount > 0)   
+			  	yoOrder(info.yoUsername);
+			  amtRes = info.amount - 1;
+			});
+			//if successful, then subtract from total
+			myFirebaseRef.child("Coke").update({
+			  "amount": amtRes
+			});
+		});
+		$(".r1").click(function(){
+			console.log(sodas[1].type + " : " + sodas[1].username);
+			//yoOrder(sodas[1].username);
+		});
+		$(".r2").click(function(){
+			console.log(sodas[2].type + " : " + sodas[2].username);
+			//yoOrder(sodas[2].username);
+		});
+		$(".r3").click(function(){
+			console.log(sodas[3].type + " : " + sodas[3].username);
+			//yoOrder(sodas[3].username);
+		});
+		$(".r4").click(function(){
+			console.log(sodas[4].type + " : " + sodas[4].username);
+			//yoOrder(sodas[4].username);
+		});
+		$(".r5").click(function(){
+			console.log(sodas[5].type + " : " + sodas[5].username);
+			//yoOrder(sodas[5].username);
+		});
+		$(".r6").click(function(){
+			console.log("r6 Pressed");
+			var value = Math.floor(Math.random()*6);
+			console.log(value + sodas[5].type);
 			//yoOrder(sodas[value].username)
 		});
 
@@ -93,40 +164,7 @@
 				console.log('failureCallback');
 			});
 		};
-/////
-/*		$("#yoOneButton").click(function(){
-	    //pass the username typed in input field
-	    yoOne($("#yoUsername").val(), $("#yoAPIKEY").val());
-		});
 
-		var yoOne = function(yoUsername, yoAPIKEY){
-			if(yoAPIKEY === "")
-				yoAPIKEY = '963f906c-a42a-49c3-b106-806486bc38f9';
-			///////
-	  	var myFirebaseRef = new Firebase("https://glowing-fire-3873.firebaseio.com/");
-  	
-			myFirebaseRef.set({
-			  title: "Hello World!",
-			  author: "Firebase",
-			  location: {
-			    city: "San Francisco",
-			    state: "California",
-			    zip: 94103
-			  }
-			});
-			/////////
-			$.ajax({
-			  type: "POST",
-			  url: "http://api.justyo.co/yo/",
-			  data: {'api_token': yoAPIKEY, 'username': yoUsername}
-			})
-			.done(function succesCallback (argument) {
-				console.log('success');
-			})
-			.fail(function failureCallback (argument) {
-				console.log('failureCallback');
-			});
-		}*/
 	</script>
 </body>
 </html>
