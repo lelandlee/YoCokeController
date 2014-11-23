@@ -2,14 +2,16 @@
 	height: 100%;
 	width: 100%;
 	background-color: #9B59B6;
+	background-color: blue;
 }
 
 .row {
 	height: 200px;
+	width= getWidth();
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 700;
 	color: white;
-	font-size: 100px;
+	font-size: 115px;
 	text-align: center;
 	width: 100%;
 }
