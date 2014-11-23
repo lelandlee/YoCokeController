@@ -36,3 +36,39 @@
 .r7 {
 	background-color: #2980B9;
 }
+
+.loginheading{
+	background-color: #e74c3c;
+}
+
+.signup{
+	background-color: #1ABC9C;
+}
+
+.login{
+	background-color: #2ECC71;
+}
+
+.recover{
+	background-color: #3498DB;
+}
+
+.loginbody{
+	background-color: #9B59B6;
+}
+
+.username{
+	background-color: #1ABC9C;
+}
+
+.passcode{
+	background-color: #2ECC71;
+}
+
+.tap{
+	background-color: #3498DB;
+}
+
+.back{
+	background-color: #34495E;
+}
