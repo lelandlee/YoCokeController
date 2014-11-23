@@ -43,19 +43,19 @@
 		  	type: "Coke", yoUsername: "YOVEND40", amount: 20, access: []
 		  },
 		  Diet_Coke: {
-		  	type:"Diet Coke",username:"CUONGHOAN1103", amount: 20, access: []
+		  	type:"Diet Coke",yoUsername:"CUONGHOAN1103", amount: 20, access: []
 		  },
 		  Sprite:{
-		  	type:"Sprite",username:"YOVEND82", amount: 20, access: []
+		  	type:"Sprite",yoUsername: "YOVEND82", amount: 20, access: []
 		  },
 		  Diet_Cherry_7up:{
-		  	type:"Diet Cherry 7up",username:"YOVEND83", amount: 20, access: []
+		  	type:"Diet Cherry 7up",yoUsername: "YOVEND83", amount: 20, access: []
 		  },
 		  Diet_Dr_Pepper: {
-		  	type:"Diet Dr. Pepper",username:"YOVEND84", amount: 20, access: []
+		  	type:"Diet Dr. Pepper",yoUsername: "YOVEND84", amount: 20, access: []
 		  },
 		  Vanilla_Coke: {
-		  	type:"Vanilla Coke",username:"YOVEND85", amount: 20, access: []
+		  	type:"Vanilla Coke",yoUsername: "YOVEND85", amount: 20, access: []
 		  }
 		});
 
@@ -79,12 +79,10 @@
 			  amountRemaining = info.amount - 1;
 			  document.getElementById("n0").innerHTML = "COKE : " + amountRemaining;
 			});
-			var time = new Date();
-			console.log(time);
 			//if successful, then subtract from total
 			myFirebaseRef.child("Coke").update({
 			  "amount": amountRemaining,
-			  "access": [time]
+			  "access": [new Date()]
 			});
 		});
 		$(".r1").click(function(){
@@ -99,7 +97,8 @@
 			});
 			//if successful, then subtract from total
 			myFirebaseRef.child("Diet_Coke").update({
-			  "amount": amountRemaining
+			  "amount": amountRemaining,
+			  "access": [new Date()]
 			});
 		});
 		$(".r2").click(function(){
@@ -114,7 +113,8 @@
 			});
 			//if successful, then subtract from total
 			myFirebaseRef.child("Sprite").update({
-			  "amount": amountRemaining
+			  "amount": amountRemaining,
+			  "access": [new Date()]
 			});
 		});
 		$(".r3").click(function(){
@@ -129,7 +129,8 @@
 			});
 			//if successful, then subtract from total
 			myFirebaseRef.child("Diet_Cherry_7up").update({
-			  "amount": amountRemaining
+			  "amount": amountRemaining,
+			  "access": [new Date()]
 			});
 		});
 		$(".r4").click(function(){
@@ -144,7 +145,8 @@
 			});
 			//if successful, then subtract from total
 			myFirebaseRef.child("Diet_Dr_Pepper").update({
-			  "amount": amountRemaining
+			  "amount": amountRemaining,
+			  "access": [new Date()]
 			});
 		});
 		$(".r5").click(function(){
@@ -159,7 +161,8 @@
 			});
 			//if successful, then subtract from total
 			myFirebaseRef.child("Vanilla_Coke").update({
-			  "amount": amountRemaining
+			  "amount": amountRemaining,
+			  "access": [new Date()]
 			});
 		});
 		$(".r6").click(function(){
