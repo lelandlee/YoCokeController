@@ -63,89 +63,126 @@
 
 		var apiURL = 'https://api.justyo.co/';
 		var yoAPIKEY = "";
-		//array of obj
-		/*var sodas = [{type:"Coke",username:"CUONGHOAN1103"},{type:"Diet Coke",username:"YOVEND81"},{type:"Sprite",username:"YOVEND82"},{type:"Diet Cherry 7up",username:"YOVEND83"},{type:"Root Beer",username:"YOVEND84"},{type:"Vanilla Coke",username:"YOVEND85"}];
-///
-		//create callback function to fix, initial error when API KEY has not been loaded
+		
+		//getting API Keys
 		$(document).click(function(){
 			yoAPIKEY = $("#yoAPIKEY").val();
 			console.log('document pressed: ' + yoAPIKEY)
 		});	
+
 		$(".r0").click(function(){
-			console.log(sodas[0].type + " : " + sodas[0].username);
-			yoOrder(sodas[0].username);
-		});
-		$(".r1").click(function(){
-			console.log(sodas[1].type + " : " + sodas[1].username);
-			//yoOrder(sodas[1].username);
-		});
-		$(".r2").click(function(){
-			console.log(sodas[2].type + " : " + sodas[2].username);
-			//yoOrder(sodas[2].username);
-		});
-		$(".r3").click(function(){
-			console.log(sodas[3].type + " : " + sodas[3].username);
-			//yoOrder(sodas[3].username);
-		});
-		$(".r4").click(function(){
-			console.log(sodas[4].type + " : " + sodas[4].username);
-			//yoOrder(sodas[4].username);
-		});
-		$(".r5").click(function(){
-			console.log(sodas[5].type + " : " + sodas[5].username);
-			//yoOrder(sodas[5].username);
-		});
-		$(".r6").click(function(){
-			console.log("r6 Pressed");
-			var value = Math.floor(Math.random()*6);
-			console.log(value + sodas[5].type);
-			//yoOrder(sodas[value].username)
-		});
-*/
-		//firebase integration
-		$(document).click(function(){
-			yoAPIKEY = $("#yoAPIKEY").val();
-			console.log('document pressed: ' + yoAPIKEY)
-		});	
-		$(".r0").click(function(){
-			var amtRes;
+			var amountRemaining;
 			myFirebaseRef.child("Coke").on("value", function(snapshot) {
 				var info = snapshot.val();
 			  console.log(info.type + " " + info.amount + " " + info.yoUsername);
 			  if(info.amount > 0)   
 			  	yoOrder(info.yoUsername);
-			  amtRes = info.amount - 1;
+			  amountRemaining = info.amount - 1;
 			});
 			//if successful, then subtract from total
 			myFirebaseRef.child("Coke").update({
-			  "amount": amtRes
+			  "amount": amountRemaining
 			});
 		});
 		$(".r1").click(function(){
-			console.log(sodas[1].type + " : " + sodas[1].username);
-			//yoOrder(sodas[1].username);
+			var amountRemaining;
+			myFirebaseRef.child("Diet_Coke").on("value", function(snapshot) {
+				var info = snapshot.val();
+			  console.log(info.type + " " + info.amount + " " + info.yoUsername);
+			  if(info.amount > 0)   
+			  	//yoOrder(info.yoUsername);
+			  amountRemaining = info.amount - 1;
+			});
+			//if successful, then subtract from total
+			myFirebaseRef.child("Diet_Coke").update({
+			  "amount": amountRemaining
+			});
 		});
 		$(".r2").click(function(){
-			console.log(sodas[2].type + " : " + sodas[2].username);
-			//yoOrder(sodas[2].username);
+			var amountRemaining;
+			myFirebaseRef.child("Sprite").on("value", function(snapshot) {
+				var info = snapshot.val();
+			  console.log(info.type + " " + info.amount + " " + info.yoUsername);
+			  if(info.amount > 0)   
+			  	//yoOrder(info.yoUsername);
+			  amountRemaining = info.amount - 1;
+			});
+			//if successful, then subtract from total
+			myFirebaseRef.child("Sprite").update({
+			  "amount": amountRemaining
+			});
 		});
 		$(".r3").click(function(){
-			console.log(sodas[3].type + " : " + sodas[3].username);
-			//yoOrder(sodas[3].username);
+			var amountRemaining;
+			myFirebaseRef.child("Diet_Cherry_7up").on("value", function(snapshot) {
+				var info = snapshot.val();
+			  console.log(info.type + " " + info.amount + " " + info.yoUsername);
+			  if(info.amount > 0)   
+			  	//yoOrder(info.yoUsername);
+			  amountRemaining = info.amount - 1;
+			});
+			//if successful, then subtract from total
+			myFirebaseRef.child("Diet_Cherry_7up").update({
+			  "amount": amountRemaining
+			});
 		});
 		$(".r4").click(function(){
-			console.log(sodas[4].type + " : " + sodas[4].username);
-			//yoOrder(sodas[4].username);
+			var amountRemaining;
+			myFirebaseRef.child("Root_Beer").on("value", function(snapshot) {
+				var info = snapshot.val();
+			  console.log(info.type + " " + info.amount + " " + info.yoUsername);
+			  if(info.amount > 0)   
+			  	//yoOrder(info.yoUsername);
+			  amountRemaining = info.amount - 1;
+			});
+			//if successful, then subtract from total
+			myFirebaseRef.child("Root_Beer").update({
+			  "amount": amountRemaining
+			});
 		});
 		$(".r5").click(function(){
-			console.log(sodas[5].type + " : " + sodas[5].username);
-			//yoOrder(sodas[5].username);
+			var amountRemaining;
+			myFirebaseRef.child("Vanilla_Coke").on("value", function(snapshot) {
+				var info = snapshot.val();
+			  console.log(info.type + " " + info.amount + " " + info.yoUsername);
+			  if(info.amount > 0)   
+			  	//yoOrder(info.yoUsername);
+			  amountRemaining = info.amount - 1;
+			});
+			//if successful, then subtract from total
+			myFirebaseRef.child("Vanilla_Coke").update({
+			  "amount": amountRemaining
+			});
 		});
 		$(".r6").click(function(){
 			console.log("r6 Pressed");
 			var value = Math.floor(Math.random()*6);
-			console.log(value + sodas[5].type);
-			//yoOrder(sodas[value].username)
+			var sodaRandom;
+			console.log("random value : " + value)
+			if(value === 0)
+				sodaRandom = 'Coke';
+			if(value === 1)
+				sodaRandom = 'Diet_Coke';
+			if(value === 2)
+				sodaRandom = 'Sprite';
+			if(value === 3)
+				sodaRandom = 'Diet_Cherry_7up';
+			if(value === 4)
+				sodaRandom = 'Root_Beer';
+			if(value === 5)
+				sodaRandom = 'Vanilla_Coke';
+			var amountRemaining;
+			myFirebaseRef.child(sodaRandom).on("value", function(snapshot) {
+				var info = snapshot.val();
+			  console.log(info.type + " " + info.amount + " " + info.yoUsername);
+			  if(info.amount > 0)   
+			  	//yoOrder(info.yoUsername);
+			  amountRemaining = info.amount - 1;
+			});
+			//if successful, then subtract from total
+			myFirebaseRef.child(sodaRandom).update({
+			  "amount": amountRemaining
+			});
 		});
 
 		var yoOrder = function(yoCoke){
