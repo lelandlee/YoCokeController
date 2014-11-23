@@ -1,41 +1,48 @@
 .vendingMachine {
-	margin-left: 5%;
-	margin-right: 5%;
 	height: 100%;
-	background-color: blue;
+	width: 100%;
+	background-color: #9B59B6;
 }
 
 .row {
 	height: 200px;
-	background-color: red;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 700;
 	color: white;
 	font-size: 100px;
 	text-align: center;
+	width: 100%;
 }
 
-.r0 {
+.rHeader{
 	background-color: #1ABC9C;
 }
-.r1 {
+#yoAPIKEY{
 	background-color: #2ECC71;
 }
-.r2 {
+.r0 {
 	background-color: #3498DB;
 }
-.r3 {
+.r1 {
 	background-color: #34495E;
 }
-.r4 {
+.r2 {
 	background-color: #16A085;
 }
-.r5 {
+.r3 {
 	background-color: #F1C40F;
 }
-.r6 {
+.r4 {
 	background-color: #2980B9;
 }
+.r5 {
+	background-color: #8E44AD;
+}
+.r6 {
+	background-color: #1ABC9C;
+}
+
+
 
 .loginheading{
 	background-color: #e74c3c;

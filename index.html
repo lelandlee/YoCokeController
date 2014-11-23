@@ -18,24 +18,20 @@
 
 	<!-- fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
-
-	
 </head>
 
 <body>
 	<div class="vendingMachine">
-		<div class="row r0">Coke</div>
-		<div class="row r1">Diet Coke</div>
-		<div class="row r2">Sprite</div>
-		<div class="row r3">Diet Cherry 7up</div>
-		<div class="row r4">Root Beer</div>
-		<div class="row r5">Vanilla Coke</div>
-		<div class="row r6">Random</div>
+		<div class="row rHeader">YO COKE CONTROLLER</div>
+		<input type="text" id="yoAPIKEY" class="row" placeholder="INPUT API KEY">
+		<div class="row r0" id="n0">COCAINE</div>
+		<div class="row r1" id="n1">DIET COCAINE</div>
+		<div class="row r2" id="n2">SPRITE</div>
+		<div class="row r3" id="n3">DIET CHERRY 7UP</div>
+		<div class="row r4" id="n4">DIET DR. PEPPER</div>
+		<div class="row r5" id="n5">VANILLA COKE</div>
+		<div class="row r6" id="n6">RANDOM</div>
 	</div>
-
-	Yo username <input type="text" id ="yoUsername">
-	Yo API KEY <input type="text" id ="yoAPIKEY">
-	<button id="yoOneButton">Yo ONE</button>
 
 	<script type="text/javascript">
 		var myFirebaseRef = new Firebase("https://glowing-fire-3873.firebaseio.com/");
@@ -52,8 +48,8 @@
 		  Diet_Cherry_7up:{
 		  	type:"Diet Cherry 7up",username:"YOVEND83", amount: 20
 		  },
-		  Root_Beer: {
-		  	type:"Root Beer",username:"YOVEND84", amount: 20
+		  Diet_Dr_Pepper: {
+		  	type:"Diet Dr. Pepper",username:"YOVEND84", amount: 20
 		  },
 		  Vanilla_Coke: {
 		  	type:"Vanilla Coke",username:"YOVEND85", amount: 20
@@ -78,6 +74,7 @@
 			  if(info.amount > 0)   
 			  	yoOrder(info.yoUsername);
 			  amountRemaining = info.amount - 1;
+			  document.getElementById("n0").innerHTML = "COKE : " + amountRemaining;
 			});
 			//if successful, then subtract from total
 			myFirebaseRef.child("Coke").update({
@@ -92,6 +89,7 @@
 			  if(info.amount > 0)   
 			  	//yoOrder(info.yoUsername);
 			  amountRemaining = info.amount - 1;
+			  document.getElementById("n1").innerHTML = "DIET COKE : " + amountRemaining;
 			});
 			//if successful, then subtract from total
 			myFirebaseRef.child("Diet_Coke").update({
@@ -106,6 +104,7 @@
 			  if(info.amount > 0)   
 			  	//yoOrder(info.yoUsername);
 			  amountRemaining = info.amount - 1;
+			  document.getElementById("n2").innerHTML = "SPRITE : " + amountRemaining;
 			});
 			//if successful, then subtract from total
 			myFirebaseRef.child("Sprite").update({
@@ -120,6 +119,7 @@
 			  if(info.amount > 0)   
 			  	//yoOrder(info.yoUsername);
 			  amountRemaining = info.amount - 1;
+			  document.getElementById("n3").innerHTML = "DIET CHERRY 7UP : " + amountRemaining;
 			});
 			//if successful, then subtract from total
 			myFirebaseRef.child("Diet_Cherry_7up").update({
@@ -128,15 +128,16 @@
 		});
 		$(".r4").click(function(){
 			var amountRemaining;
-			myFirebaseRef.child("Root_Beer").on("value", function(snapshot) {
+			myFirebaseRef.child("Diet_Dr_Pepper").on("value", function(snapshot) {
 				var info = snapshot.val();
 			  console.log(info.type + " " + info.amount + " " + info.yoUsername);
 			  if(info.amount > 0)   
 			  	//yoOrder(info.yoUsername);
 			  amountRemaining = info.amount - 1;
+			  document.getElementById("n4").innerHTML = "DIET DR PEPPER : " + amountRemaining;
 			});
 			//if successful, then subtract from total
-			myFirebaseRef.child("Root_Beer").update({
+			myFirebaseRef.child("Diet_Dr_Pepper").update({
 			  "amount": amountRemaining
 			});
 		});
@@ -148,6 +149,7 @@
 			  if(info.amount > 0)   
 			  	//yoOrder(info.yoUsername);
 			  amountRemaining = info.amount - 1;
+			  document.getElementById("n5").innerHTML = "VANILLA COKE : " + amountRemaining;
 			});
 			//if successful, then subtract from total
 			myFirebaseRef.child("Vanilla_Coke").update({
@@ -168,7 +170,7 @@
 			if(value === 3)
 				sodaRandom = 'Diet_Cherry_7up';
 			if(value === 4)
-				sodaRandom = 'Root_Beer';
+				sodaRandom = 'Diet_Dr_Pepper';
 			if(value === 5)
 				sodaRandom = 'Vanilla_Coke';
 			var amountRemaining;
@@ -186,7 +188,6 @@
 		});
 
 		var yoOrder = function(yoCoke){
-			//fix later so user must input API_KEY
 		//	if(yoAPIKEY === "")
 		//		yoAPIKEY = '963f906c-a42a-49c3-b106-806486bc38f9';
 			$.ajax({
