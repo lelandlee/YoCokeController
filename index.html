@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <title>YoCokeController</title>
   <!-- rename as Yo Ordr??? -->
+
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="jquery.fittext.js"></script>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -26,8 +26,8 @@
 	<div class="vendingMachine">
 		<div class="row rHeader">YO COKE CONTROLLER</div>
 		<input type="text" id="yoAPIKEY" class="row" placeholder="INPUT API KEY">
-		<div class="row r0" id="n0">COCAINE</div>
-		<div class="row r1" id="n1">DIET COCAINE</div>
+		<div class="row r0" id="n0">COKE</div>
+		<div class="row r1" id="n1">DIET COKE</div>
 		<div class="row r2" id="n2">SPRITE</div>
 		<div class="row r3" id="n3">DIET CHERRY 7UP</div>
 		<div class="row r4" id="n4">DIET DR. PEPPER</div>
@@ -35,37 +35,27 @@
 		<div class="row r6" id="n6">RANDOM</div>
 	</div>
 
-	<script>
-		jQuery(".r0").fitText();
-		jQuery(".r1").fitText();
-		jQuery(".r2").fitText();
-		jQuery(".r3").fitText();
-		jQuery(".r4").fitText();
-		jQuery(".r5").fitText();
-		jQuery(".r6").fitText();
-	</script>
-
 >>>>>>> origin/master
 	<script type="text/javascript">
 		var myFirebaseRef = new Firebase("https://glowing-fire-3873.firebaseio.com/");
 		myFirebaseRef.set({
 		  Coke: {
-		  	type: "Coke", yoUsername: "CUONGHOAN1103", amount: 20
+		  	type: "Coke", yoUsername: "CUONGHOAN1103", amount: 20, access: []
 		  },
 		  Diet_Coke: {
-		  	type:"Diet Coke",username:"YOVEND81", amount: 20
+		  	type:"Diet Coke",username:"YOVEND81", amount: 20, access: []
 		  },
 		  Sprite:{
-		  	type:"Sprite",username:"YOVEND82", amount: 20
+		  	type:"Sprite",username:"YOVEND82", amount: 20, access: []
 		  },
 		  Diet_Cherry_7up:{
-		  	type:"Diet Cherry 7up",username:"YOVEND83", amount: 20
+		  	type:"Diet Cherry 7up",username:"YOVEND83", amount: 20, access: []
 		  },
 		  Diet_Dr_Pepper: {
-		  	type:"Diet Dr. Pepper",username:"YOVEND84", amount: 20
+		  	type:"Diet Dr. Pepper",username:"YOVEND84", amount: 20, access: []
 		  },
 		  Vanilla_Coke: {
-		  	type:"Vanilla Coke",username:"YOVEND85", amount: 20
+		  	type:"Vanilla Coke",username:"YOVEND85", amount: 20, access: []
 		  }
 		});
 
@@ -89,9 +79,12 @@
 			  amountRemaining = info.amount - 1;
 			  document.getElementById("n0").innerHTML = "COKE : " + amountRemaining;
 			});
+			var time = new Date();
+			console.log(time);
 			//if successful, then subtract from total
 			myFirebaseRef.child("Coke").update({
-			  "amount": amountRemaining
+			  "amount": amountRemaining,
+			  "access": [time]
 			});
 		});
 		$(".r1").click(function(){
