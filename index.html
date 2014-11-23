@@ -81,10 +81,13 @@
 			});
 			//if successful, then subtract from total
 			myFirebaseRef.child("Coke").update({
-			  "amount": amountRemaining,
-			  "access": [new Date()]
+			  "amount": amountRemaining
 			});
 		});
+
+
+
+
 		$(".r1").click(function(){
 			var amountRemaining;
 			myFirebaseRef.child("Diet_Coke").on("value", function(snapshot) {
@@ -97,10 +100,14 @@
 			});
 			//if successful, then subtract from total
 			myFirebaseRef.child("Diet_Coke").update({
-			  "amount": amountRemaining,
+			  "amount": amountRemaining,			  
 			  "access": [new Date()]
-			});
+
+			});			
 		});
+
+
+
 		$(".r2").click(function(){
 			var amountRemaining;
 			myFirebaseRef.child("Sprite").on("value", function(snapshot) {
