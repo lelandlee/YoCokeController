@@ -23,13 +23,13 @@
 
 <body>
 	<div class="vendingMachine">
-		<div class="row r1">Coke</div>
-		<div class="row r2">Diet Coke</div>
-		<div class="row r3">Sprite</div>
-		<div class="row r4">Diet Cherry 7up</div>
-		<div class="row r5">Root Beer</div>
-		<div class="row r6">Vanilla Coke</div>
-		<div class="row r7">Vanilla Coke</div>
+		<div class="row r0">Coke</div>
+		<div class="row r1">Diet Coke</div>
+		<div class="row r2">Sprite</div>
+		<div class="row r3">Diet Cherry 7up</div>
+		<div class="row r4">Root Beer</div>
+		<div class="row r5">Vanilla Coke</div>
+		<div class="row r6">Random</div>
 	</div>
 
 	Yo username <input type="text" id ="yoUsername">
@@ -39,39 +39,42 @@
 	<script type="text/javascript">
 		var apiURL = 'https://api.justyo.co/';
 		var yoAPIKEY = "";
+		var sodas = [{type:"Coke",username:"CUONGHOAN1103"},{type:"Diet Coke",username:"YOVEND81"},{type:"Sprite",username:"YOVEND82"},{type:"Diet Cherry 7up",username:"YOVEND83"},{type:"Root Beer",username:"YOVEND84"},{type:"Vanilla Coke",username:"YOVEND85"}];
 ///
-		//create callback function to fix
+		//create callback function to fix, initial error when API KEY has not been loaded
 		$(document).click(function(){
 			yoAPIKEY = $("#yoAPIKEY").val();
 			console.log('document pressed: ' + yoAPIKEY)
 		});
+		$(".r0").click(function(){
+			console.log("r0 Pressed + " + sodas[0].username);
+			yoOrder(sodas[0].username);
+		});
 		$(".r1").click(function(){
-			console.log("r1 Pressed");
-			yoOrder('CUONGHOAN1103');
+			console.log("r0 Pressed + " + sodas[1].username);
+			//yoOrder(sodas[1].username);
 		});
 		$(".r2").click(function(){
-			console.log("r2 Pressed");
-			yoOrder('YOVEND81');
+			console.log("r0 Pressed + " + sodas[2].username);
+			//yoOrder(sodas[2].username);
 		});
 		$(".r3").click(function(){
-			console.log("r3 Pressed");
-			yoOrder('YOVEND82');
+			console.log("r0 Pressed + " + sodas[3].username);
+			//yoOrder(sodas[3].username);
 		});
 		$(".r4").click(function(){
-			console.log("r4 Pressed");
-			yoOrder('YOVEND83');
+			console.log("r0 Pressed + " + sodas[4].username);
+			//yoOrder(sodas[4].username);
 		});
 		$(".r5").click(function(){
-			console.log("r5 Pressed");
-			yoOrder('YOVEND84');
+			console.log("r0 Pressed + " + sodas[5].username);
+			//yoOrder(sodas[5].username);
 		});
 		$(".r6").click(function(){
 			console.log("r6 Pressed");
-			yoOrder('YOVEND85');
-		});
-		$(".r7").click(function(){
-			console.log("r7 Pressed");
-			//randomly generated
+			var value = Math.floor(Math.random()*6);
+			console.log(value);
+			//yoOrder(sodas[value].username)
 		});
 
 		var yoOrder = function(yoCoke){
