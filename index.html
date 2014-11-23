@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YoCoke</title>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+
+  <!-- css -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+
+	<!-- fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+
+	
+</head>
+
+<body>
+	<div class="vendingMachine">
+		<div class="row r1">Coke</div>
+		<div class="row r2">Diet Coke</div>
+		<div class="row r3">Sprite</div>
+		<div class="row r4">Diet Cherry 7up</div>
+		<div class="row r5">Root Beer</div>
+		<div class="row r6">Vanilla Coke</div>
+		<div class="row r7">Vanilla Coke</div>
+	</div>
+
+	Yo username <input type="text" id ="yoUsername">
+	Yo API KEY <input type="text" id ="yoAPIKEY">
+	<button id="yoOneButton">Yo ONE</button>
+
+	<script type="text/javascript">
+		var apiURL = 'https://api.justyo.co/';
+		var yoAPIKEY = "";
+///
+		//create callback function to fix
+		$(document).click(function(){
+			yoAPIKEY = $("#yoAPIKEY").val();
+			console.log('document pressed: ' + yoAPIKEY)
+		});
+		$(".r1").click(function(){
+			console.log("r1 Pressed");
+			yoOrder('CUONGHOAN1103');
+		});
+		$(".r2").click(function(){
+			console.log("r2 Pressed");
+			yoOrder('YOVEND81');
+		});
+		$(".r3").click(function(){
+			console.log("r3 Pressed");
+			yoOrder('YOVEND82');
+		});
+		$(".r4").click(function(){
+			console.log("r4 Pressed");
+			yoOrder('YOVEND83');
+		});
+		$(".r5").click(function(){
+			console.log("r5 Pressed");
+			yoOrder('YOVEND84');
+		});
+		$(".r6").click(function(){
+			console.log("r6 Pressed");
+			yoOrder('YOVEND85');
+		});
+		$(".r7").click(function(){
+			console.log("r7 Pressed");
+			//randomly generated
+		});
+
+		var yoOrder = function(yoCoke){
+			//fix later so user must input API_KEY
+		//	if(yoAPIKEY === "")
+		//		yoAPIKEY = '963f906c-a42a-49c3-b106-806486bc38f9';
+			$.ajax({
+			  type: "POST",
+			  url: "http://api.justyo.co/yo/",
+			  data: {'api_token': yoAPIKEY, 'username': yoCoke}
+			})
+			.done(function succesCallback (argument) {
+				console.log('success');
+			})
+			.fail(function failureCallback (argument) {
+				console.log('failureCallback');
+			});
+		};
+/////
+/*		$("#yoOneButton").click(function(){
+	    //pass the username typed in input field
+	    yoOne($("#yoUsername").val(), $("#yoAPIKEY").val());
+		});
+
+		var yoOne = function(yoUsername, yoAPIKEY){
+			if(yoAPIKEY === "")
+				yoAPIKEY = '963f906c-a42a-49c3-b106-806486bc38f9';
+			///////
+	  	var myFirebaseRef = new Firebase("https://glowing-fire-3873.firebaseio.com/");
+  	
+			myFirebaseRef.set({
+			  title: "Hello World!",
+			  author: "Firebase",
+			  location: {
+			    city: "San Francisco",
+			    state: "California",
+			    zip: 94103
+			  }
+			});
+			/////////
+			$.ajax({
+			  type: "POST",
+			  url: "http://api.justyo.co/yo/",
+			  data: {'api_token': yoAPIKEY, 'username': yoUsername}
+			})
+			.done(function succesCallback (argument) {
+				console.log('success');
+			})
+			.fail(function failureCallback (argument) {
+				console.log('failureCallback');
+			});
+		}*/
+	</script>
+</body>
+</html>

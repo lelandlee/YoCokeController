@@ -1,0 +1,38 @@
+.vendingMachine {
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 100%;
+	background-color: blue;
+}
+
+.row {
+	height: 200px;
+	background-color: red;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	color: white;
+	font-size: 100px;
+	text-align: center;
+}
+
+.r1 {
+	background-color: #1ABC9C;
+}
+.r2 {
+	background-color: #2ECC71;
+}
+.r3 {
+	background-color: #3498DB;
+}
+.r4 {
+	background-color: #34495E;
+}
+.r5 {
+	background-color: #16A085;
+}
+.r6 {
+	background-color: #F1C40F;
+}
+.r7 {
+	background-color: #2980B9;
+}
